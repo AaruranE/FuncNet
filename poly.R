@@ -16,3 +16,4 @@ plot(net)
 
 dat2 <- data.frame(x=-100:100, y=f(-100:100))
 ggplot(dat2, aes(x=x,y=y)) + geom_line() + geom_point()
+net2 <- neuralnet(y~x, dat2, hidden = 1, stepmax = 2e5)
