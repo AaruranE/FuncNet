@@ -102,6 +102,10 @@ class Neural_Network(object):
         dJdW1, dJdW2 = self.costFunctionPrime(X, y)
         return np.concatenate((dJdW1.ravel(), dJdW2.ravel()))
 
+    def score(self, x_test, y_test):
+        totalError = self.costFunction(x_test , y_test)
+        return (np.sum(totalError**2))
+
 
 def computeNumericalGradient(N, X, y):
     paramsInitial = N.getParams()
@@ -128,6 +132,8 @@ def computeNumericalGradient(N, X, y):
     N.setParams(paramsInitial)
 
     return numgrad
+
+
 
 
 ## ----------------------- Part 6 ---------------------------- ##
@@ -165,6 +171,8 @@ class trainer(object):
 
         self.N.setParams(_res.x)
         self.optimizationResults = _res
+
+
 
 NN = Neural_Network()
 T = trainer(NN)
